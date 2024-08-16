@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float JumpPowerIncrease = 1;
     private float JumpPower = 0;
     
 
@@ -27,9 +28,9 @@ public class Player : MonoBehaviour
         {
             anim.SetInteger("StateID", 1);
         }
-        if (Input.GetKey(KeyCode.Space)) 
+        else if (Input.GetKey(KeyCode.Space)) 
         {
-            JumpPower += 1;
+            JumpPower += JumpPowerIncrease;
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -44,5 +45,7 @@ public class Player : MonoBehaviour
     {
         rigd.velocity = Vector2.zero;
         anim.SetInteger("StateID", 0);
+
+        CameraManager.Instance.OnFollow(transform.position);
     }
 }

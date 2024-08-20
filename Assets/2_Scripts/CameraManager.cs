@@ -6,7 +6,7 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager Instance;
 
-    [SerializeField] private float followSpeed;
+    
 
     public void Init()
     {
@@ -22,7 +22,7 @@ public class CameraManager : MonoBehaviour
     {
         while (0.1f < Vector3.Distance(transform.position, targetPos))
         {
-            transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * followSpeed);
+            transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * DataBaseManager.Instance.followSpeed);
             yield return null;
         }
         //transform.position = targetPos;

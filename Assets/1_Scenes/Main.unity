@@ -155,7 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde04d777eeb4194e97e497fe981a88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPowerIncrease: 2
 --- !u!50 &88525912
 Rigidbody2D:
   serializedVersion: 4
@@ -315,35 +314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1751bcab0214a448f044d4d30b8403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPosTrf: {fileID: 147358816}
-  LargePlatformArr:
-  - {fileID: 5623247184522563970, guid: bdee56328c90caf49a5b61571324f228, type: 3}
-  - {fileID: 5623247184522563970, guid: 8779d6c920a82b2419f203ac13e3dafe, type: 3}
-  - {fileID: 5623247184522563970, guid: 0eff38a81cd8a5949a6f97b84deeb6d0, type: 3}
-  MiddlePlatformArr:
-  - {fileID: 5623247184522563970, guid: 84641f94a9e67954ab4a632b427f60d1, type: 3}
-  - {fileID: 5623247184522563970, guid: 6f533a07f04a8f248b21b3cbf834cc6e, type: 3}
-  - {fileID: 5623247184522563970, guid: 7e5c6b26b4af54b4aa2ed52492616fba, type: 3}
-  SmallPlatformArr:
-  - {fileID: 5623247184522563970, guid: bd1a8c4f3427a924481bbc963aee4d74, type: 3}
-  - {fileID: 5623247184522563970, guid: 9f35bc6c643b2814e8b0a526036282db, type: 3}
-  - {fileID: 5623247184522563970, guid: 32efed2b2d609ca4f8896c09326e8823, type: 3}
-  - {fileID: 5623247184522563970, guid: 8139829fa94d85f4ba51a45f75e5e891, type: 3}
-  DataArr:
-  - GroupCount: 3
-    largePercent: 1
-    middlePercent: 0
-    smallPercent: 0
-  - GroupCount: 2
-    largePercent: 0
-    middlePercent: 1
-    smallPercent: 0
-  - GroupCount: 2
-    largePercent: 0.4
-    middlePercent: 0.3
-    smallPercent: 0.3
-  GapIntervalMin: 1
-  GapIntervalMax: 2
 --- !u!4 &489404190
 Transform:
   m_ObjectHideFlags: 0
@@ -497,7 +467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1184d1d5c6bb86040a1dd7ba1d077262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 6
 --- !u!1 &1318986619
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +499,7 @@ MonoBehaviour:
   platformManager: {fileID: 489404189}
   player: {fileID: 88525911}
   cameraManager: {fileID: 1196707444}
+  dataBaseManager: {fileID: 11400000, guid: 58c2ee9d019472b48ad5650ce049b3c5, type: 2}
 --- !u!4 &1318986621
 Transform:
   m_ObjectHideFlags: 0

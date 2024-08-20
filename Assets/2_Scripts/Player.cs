@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float JumpPowerIncrease = 1;
     private float JumpPower = 0;
     
 
@@ -30,7 +26,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Space)) 
         {
-            JumpPower += JumpPowerIncrease;
+            JumpPower += DataBaseManager.Instance.JumpPowerIncrease;
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {

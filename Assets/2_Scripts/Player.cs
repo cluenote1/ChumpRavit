@@ -43,5 +43,10 @@ public class Player : MonoBehaviour
         anim.SetInteger("StateID", 0);
 
         CameraManager.Instance.OnFollow(transform.position);
+
+        if (collision.transform.parent.TryGetComponent(out Platform platrform))
+        {
+            platrform.OnLanding();
+        }
     }
 }

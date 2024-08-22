@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float JumpPower = 0;
-    
+    private float JumpPower;
+    private Platform landedPlatform;
 
     private Rigidbody2D rigd;
     private Animator anim;
@@ -46,7 +46,14 @@ public class Player : MonoBehaviour
 
         if (collision.transform.parent.TryGetComponent(out Platform platrform))
         {
-            platrform.OnLanding();
+            ScoreManager.instance.AddScore(platrform.Score, platrform.transform.position);
+
+            //platrform.OnLanding();
+
+            if (landedPlatform != platrform) ScoreManager.instance.AddBonus(DataBaseManager.Instance.BonusValue, transform.position);
+            else ScoreManager.instance.ResetBonus();
+
+            landedPlatform = platrform;
         }
     }
 }

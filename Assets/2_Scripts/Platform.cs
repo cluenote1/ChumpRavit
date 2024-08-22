@@ -5,13 +5,12 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     private BoxCollider2D col;
-    [SerializeField] private int Score;
+    [SerializeField] private int score;
 
-    public float HalfSizeX => col.size.x * 0.5f;
-    public float GetHalfSizeX()
-    {
-        return col.size.x * col.size.x;
-    }
+    public float GetHalfSizeX => col.size.x * 0.5f;
+
+    public int Score => score;
+    
     private void Awake()
     {
         col = GetComponentInChildren<BoxCollider2D>();
@@ -22,6 +21,6 @@ public class Platform : MonoBehaviour
     }
     internal void OnLanding()
     {
-        ScoreManager.instance.AddScore(Score);
+        ScoreManager.instance.AddScore(score, transform.position);
     }
 }

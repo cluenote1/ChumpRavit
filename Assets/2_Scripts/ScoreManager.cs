@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     [SerializeField] private TextMeshProUGUI scoreTmp;
+    [SerializeField] private Score baseScore;
 
     private int totalScore;
 
@@ -16,9 +17,22 @@ public class ScoreManager : MonoBehaviour
         instance = this;
     }
 
-    public void AddScore(int score)
+    public void AddScore(int score, Vector2 scorePos)
     {
+        Score scoreObject = Instantiate(baseScore);
+        scoreObject.transform.position = scorePos;
+        scoreObject.Active(score);
+
         totalScore += score;
         scoreTmp.text = totalScore.ToString();
+    }
+
+    internal void AddBonus(float bonusValue, Vector3 position)
+    {
+        throw new KeyNotFoundException();
+    }
+    internal void ResetBonus()
+    {
+        throw new KeyNotFoundException();
     }
 }

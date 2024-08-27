@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2613f670d11cf9d44b6c9d81c982759f, type: 3}
   m_Name: DataBaseManager
   m_EditorClassIdentifier: 
+  ScoreColor: {r: 1, g: 1, b: 1, a: 0}
+  BonusColor: {r: 1, g: 0.8980392, b: 0, a: 0}
+  ScorePopinterval: 0.2
   JumpPowerIncrease: 10
   LargePlatformArr:
   - {fileID: 5623247184522563970, guid: bdee56328c90caf49a5b61571324f228, type: 3}
@@ -27,7 +30,7 @@ MonoBehaviour:
   - {fileID: 5623247184522563970, guid: 32efed2b2d609ca4f8896c09326e8823, type: 3}
   - {fileID: 5623247184522563970, guid: 8139829fa94d85f4ba51a45f75e5e891, type: 3}
   DataArr:
-  - GroupCount: 10000
+  - GroupCount: 3
     largePercent: 1
     middlePercent: 0
     smallPercent: 0
@@ -41,4 +44,5 @@ MonoBehaviour:
     smallPercent: 0.3
   GapIntervalMin: 1
   GapIntervalMax: 2
+  BonusValue: 0.05
   followSpeed: 5

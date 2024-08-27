@@ -13,9 +13,10 @@ public class Score : MonoBehaviour
         Tmp = GetComponentInChildren<TextMeshPro>();
     }
 
-    public void Active(int score)
+    public void Active(string scoreTxt, Color color)
     {
-        Tmp.text = score.ToString();
+        Tmp.text = scoreTxt;
+        Tmp.color = color;
     }
     
     public void Deactive()

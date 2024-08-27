@@ -48,8 +48,6 @@ public class Player : MonoBehaviour
         {
             ScoreManager.instance.AddScore(platrform.Score, platrform.transform.position);
 
-            //platrform.OnLanding();
-
             if (landedPlatform != platrform) ScoreManager.instance.AddBonus(DataBaseManager.Instance.BonusValue, transform.position);
             else ScoreManager.instance.ResetBonus();
 

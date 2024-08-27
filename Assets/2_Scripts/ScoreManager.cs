@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO.IsolatedStorage;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 using UnityEngine.XR;
 
 public class ScoreManager : MonoBehaviour
@@ -24,17 +25,23 @@ public class ScoreManager : MonoBehaviour
     {
         Score scoreObject = Instantiate(baseScore);
         scoreObject.transform.position = scorePos;
-        scoreObject.Active(score);
+        scoreObject.Active(score.ToString(), DataBaseManager.Instance.ScoreColor);
 
         totalScore += score;
         scoreTmp.text = totalScore.ToString();
     }
 
-    internal void AddBonus(float bonus, Vector3 position)
+    internal void AddBonus(float bonus, Vector2 position)
     {
+        Score scoreObject = Instantiate(baseScore);
+        scoreObject.transform.position = position;
+        string str = "Bonus " + bonus.ToPercentString();
+        scoreObject.Active(str, DataBaseManager.Instance.ScoreColor);
+
         totalBonus += bonus;
         bonusTmp.text = totalBonus.ToPercentString();
     }
+
     internal void ResetBonus()
     {
         totalBonus = 0;

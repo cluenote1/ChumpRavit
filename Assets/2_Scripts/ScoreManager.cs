@@ -4,6 +4,7 @@ using System.IO.IsolatedStorage;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
 
@@ -78,7 +79,11 @@ public class ScoreManager : MonoBehaviour
             color = DataBaseManager.Instance.BonusColor,
             pos = position
         });
-        
+
+        //canvas
+        totalBonus += bonus;
+        bonusTmp.text = bonus.ToPercentString();
+
     }
 
     internal void ResetBonus()

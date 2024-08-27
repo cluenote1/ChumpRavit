@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         float b = 123456.789f;
         
 
-        MyExtension.ToFormString(b, 0);
-        b.ToFormString();
+        MyExtension.ToFormatString(b, 0);
+        b.ToFormatString();
     }
 }

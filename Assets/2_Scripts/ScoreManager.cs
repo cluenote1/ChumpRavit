@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
         public Vector2 pos;
     }
 
-    public static ScoreManager instance;
+    public static ScoreManager Instance;
     [SerializeField] private TextMeshProUGUI scoreTmp;
     [SerializeField] private TextMeshProUGUI bonusTmp;
     [SerializeField] private Score baseScore;
@@ -28,7 +28,7 @@ public class ScoreManager : MonoBehaviour
 
     public void Init()
     {
-        instance = this;
+        Instance = this;
         StartCoroutine(OnScoreCor());
     }
 

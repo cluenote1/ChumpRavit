@@ -230,9 +230,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0074597597, y: 1.5815222}
+  m_Offset: {x: 0.025468588, y: 1.0895581}
   serializedVersion: 2
-  m_Radius: 1.5672443
+  m_Radius: 1.0848103
 --- !u!95 &88525915
 Animator:
   serializedVersion: 5
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "19999\uD55C\uAD74"
+  m_text: 19999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 671da94af27170e4287b810fd84dac5d, type: 2}
   m_sharedMaterial: {fileID: 8266642037183219419, guid: 671da94af27170e4287b810fd84dac5d, type: 2}

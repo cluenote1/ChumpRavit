@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CameraManager cameraManager;
     [SerializeField] private DataBaseManager dataBaseManager;
     [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private SoundManager soundManager;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
         platformManager.Init();
         cameraManager.Init();
         scoreManager.Init();
-        
+        soundManager.Init();
     }
 
     private void Start()

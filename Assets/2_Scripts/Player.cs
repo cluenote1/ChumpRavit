@@ -47,9 +47,9 @@ public class Player : MonoBehaviour
 
         CameraManager.Instance.OnFollow(transform.position);
 
-        if (collision.transform.parent.TryGetComponent(out Platform platrform))
+        if (collision.transform.TryGetComponent(out Platform platrform))
         {
-
+            platrform.OnLandingAnimation();
             if (landedPlatform != platrform) ScoreManager.Instance.AddBonus(DataBaseManager.Instance.BonusValue, transform.position);
             else ScoreManager.Instance.ResetBonus(transform.position);
 

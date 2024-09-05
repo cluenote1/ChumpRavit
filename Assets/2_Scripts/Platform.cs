@@ -17,9 +17,12 @@ public class Platform : MonoBehaviour
         col = GetComponentInChildren<BoxCollider2D>();
         anim = GetComponent<Animation>();
     }
-    public void Active(Vector2 pos)
+    public void Active(Vector2 pos, bool isFirstFrame)
     {
         transform.position = pos;
+
+        if (isFirstFrame)
+            return;
 
         if (Random.value < DataBaseManager.Instance.itemSpawnPer)
         {
@@ -28,7 +31,7 @@ public class Platform : MonoBehaviour
         }
         
     }
-    internal void OnLandingAnimation()
+    internal void OnLanding()
     {
         anim.Play();
     }

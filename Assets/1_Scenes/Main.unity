@@ -230,9 +230,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025468588, y: 1.0895581}
+  m_Offset: {x: 0.025468588, y: 1.1295848}
   serializedVersion: 2
-  m_Radius: 1.0848103
+  m_Radius: 1.0447836
 --- !u!95 &88525915
 Animator:
   serializedVersion: 5
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 131519919}
   - component: {fileID: 131519918}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Rain Showers Remix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

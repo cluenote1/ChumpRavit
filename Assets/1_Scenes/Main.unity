@@ -5191,6 +5191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1751bcab0214a448f044d4d30b8403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPosTrf: {fileID: 147358816}
+  LandingPlatformNum: 0
 --- !u!4 &489404190
 Transform:
   m_ObjectHideFlags: 0

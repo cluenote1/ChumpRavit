@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlatformManager : MonoBehaviour
 {
+    public static PlatformManager Instance;
+
     [System.Serializable]
     public class Data
     {
@@ -33,17 +35,37 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
-    private Vector3 spawnPos;
     [SerializeField] private Transform spawnPosTrf;
-
+    private Vector3 spawnPos;
     private int platformNum = 0;
+    public int LandingPlatformNum;
+    private Data lastDate;
 
     Dictionary<int, Platform[]> PlatformArrDic = new Dictionary<int, Platform[]>();
     internal void Init()
     {
+        Instance = this;
+
         PlatformArrDic.Add(0, DataBaseManager.Instance.SmallPlatformArr);
         PlatformArrDic.Add(1, DataBaseManager.Instance.MiddlePlatformArr);
         PlatformArrDic.Add(2, DataBaseManager.Instance.LargePlatformArr);
+    }
+
+    public void Update()
+    {
+        if (platformNum - LandingPlatformNum < DataBaseManager.Instance.remainPlatformCount)
+        {
+            Debug.Log($"platformNum: {platformNum}, LandingPlatformNum:{LandingPlatformNum}, remianPlatformCount:{DataBaseManager.Instance.remainPlatformCount}");
+            int lastIndex = DataBaseManager.Instance.DataArr.Length - 1;
+            Data lastData = DataBaseManager.Instance.DataArr[lastIndex];
+
+            
+            for (int i = 0; i < lastData.GroupCount; i++)
+            {
+                int platformID = lastData.GetplatformID();
+                ActiveOne(platformID);
+            }
+        }
     }
 
     internal void Active()
@@ -55,12 +77,10 @@ public class PlatformManager : MonoBehaviour
         foreach (Data data in DataBaseManager.Instance.DataArr)
         {
             platformGroupSum += data.GroupCount;
-            Debug.Log($"platformGroupSum: {platformGroupSum} =========");
             while(platformNum <  platformGroupSum)
             {
                 int platformID = data.GetplatformID();
                 ActiveOne(platformID);
-                platformNum++;
             }
         }
         
@@ -68,20 +88,21 @@ public class PlatformManager : MonoBehaviour
 
     private  void ActiveOne(int platformID)
     {
+        platformNum++;
         Platform[] platforms = PlatformArrDic[platformID];
 
         int randID = Random.Range(0, platforms.Length);
         Platform randomplatform = platforms[randID];
-        Debug.Log($"Platform [{platformID}, {randID}]");
+        
 
         Platform platform = Instantiate(randomplatform);
 
-        bool isFirstFrame = platformNum == 0;
-        if (isFirstFrame == false)
+        
+        if (platformNum > 1)
             spawnPos = spawnPos + Vector3.right * platform.HalfSizeX;
 
       
-        platform.Active(spawnPos, isFirstFrame);
+        platform.Active(spawnPos, platformNum);
 
         float gap = Random.Range(DataBaseManager.Instance.GapIntervalMin, DataBaseManager.Instance.GapIntervalMax);
         spawnPos = spawnPos + Vector3.right * (platform.HalfSizeX + gap);

@@ -20,6 +20,7 @@ MonoBehaviour:
   itemSpawnPer: 1
   itemBonus: 0.25
   JumpPowerIncrease: 10
+  GameOverY: -6.5
   LargePlatformArr:
   - {fileID: 5623247184522563970, guid: bdee56328c90caf49a5b61571324f228, type: 3}
   - {fileID: 5623247184522563970, guid: 8779d6c920a82b2419f203ac13e3dafe, type: 3}
@@ -34,15 +35,15 @@ MonoBehaviour:
   - {fileID: 5623247184522563970, guid: 32efed2b2d609ca4f8896c09326e8823, type: 3}
   - {fileID: 5623247184522563970, guid: 8139829fa94d85f4ba51a45f75e5e891, type: 3}
   DataArr:
-  - GroupCount: 5
+  - GroupCount: 10
     largePercent: 0.5
     middlePercent: 0.5
     smallPercent: 0
-  - GroupCount: 5
+  - GroupCount: 10
     largePercent: 0.3
     middlePercent: 0.3
     smallPercent: 0
-  - GroupCount: 5
+  - GroupCount: 10
     largePercent: 0.1
     middlePercent: 0.1
     smallPercent: 0.8

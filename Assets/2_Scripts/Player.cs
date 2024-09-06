@@ -41,6 +41,11 @@ public class Player : MonoBehaviour
             Effect effect = Instantiate(DataBaseManager.Instance.effect);
             effect.Active(transform.position);
         }
+
+        if (transform.position.y < DataBaseManager.Instance.GameOverY)
+        {
+            GameManager.Instance.OnGameOver();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -20,6 +20,7 @@ public class DataBaseManager : ScriptableObject
 
     [Header("ÇÃ·¹ÀÌ¾î")]
     public float JumpPowerIncrease = 1;
+    public float GameOverY = -6.5f;
 
     [Header("ÇÃ·¿Æû")]
     [Tooltip("Å« ÇÃ·¿Æû Preb")] public Platform[] LargePlatformArr;
@@ -37,18 +38,21 @@ public class DataBaseManager : ScriptableObject
     [Header("»ç¿îµå")]
     public SfxData[] sfxDataArr;
     public BgmData[] bgmDataArr;
-    private Dictionary<Define.SfxType, SfxData> sfxDataDic = new Dictionary<Define.SfxType, SfxData> ();
-    private Dictionary<Define.BgmType, BgmData> bgmDataDic = new Dictionary<Define.BgmType, BgmData>();
+    private Dictionary<Define.SfxType, SfxData> sfxDataDic;
+    private Dictionary<Define.BgmType, BgmData> bgmDataDic;
 
     public void Init()
     {
         Instance = this;
+        sfxDataDic = new Dictionary<Define.SfxType, SfxData>();
+       
 
         foreach (SfxData data in sfxDataArr)
         {
             sfxDataDic.Add(data.sfxType, data);
         }
 
+        bgmDataDic = new Dictionary<Define.BgmType, BgmData>();
         foreach (BgmData data in bgmDataArr)
         {
             bgmDataDic.Add(data.bgmType, data);

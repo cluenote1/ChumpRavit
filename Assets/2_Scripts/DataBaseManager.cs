@@ -20,7 +20,9 @@ public class DataBaseManager : ScriptableObject
 
     [Header("ÇÃ·¹ÀÌ¾î")]
     public float JumpPowerIncrease = 1;
-    public float GameOverY = -6.5f;
+    public float GameOverY = -6f;
+    public float minJumpPower = 400f;
+    public float maxJumpPower = 800f;
 
     [Header("ÇÃ·¿Æû")]
     [Tooltip("Å« ÇÃ·¿Æû Preb")] public Platform[] LargePlatformArr;

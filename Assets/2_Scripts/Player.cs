@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float JumpPower;
+    public float JumpPower = 0;
     private Platform landedPlatform;
 
     private Rigidbody2D rigd;
     private Animator anim;
+    private bool isJumpReady;
 
     private void Awake()
     {
@@ -20,28 +21,47 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isJumpReady == false)
         {
-            anim.SetInteger("StateID", 1);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isJumpReady = true;
+                anim.SetInteger("StateID", 1);
+            }
         }
-        else if (Input.GetKey(KeyCode.Space)) 
+        else
         {
-            JumpPower += DataBaseManager.Instance.JumpPowerIncrease;
+            JumpPower += DataBaseManager.Instance.JumpPowerIncrease * Time.deltaTime;
+            if (JumpPower < DataBaseManager.Instance.maxJumpPower)
+            {
+                SetIdleState();
+                return;
+            }
+                
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                isJumpReady = false;
+                if (JumpPower < DataBaseManager.Instance.minJumpPower)
+                {
+                    SetIdleState();
+                    
+                }
+                else
+                {
+                    rigd.AddForce(Vector2.one * JumpPower);
+                    JumpPower = 0;
+
+                    anim.SetInteger("StateID", 2);
+
+                    Define.SfxType sfxType = Random.value < 0.5f ? Define.SfxType.Jump1 : Define.SfxType.Jump2;
+                    SoundManager.Instance.PlaySfx(sfxType);
+
+                    Effect effect = Instantiate(DataBaseManager.Instance.effect);
+                    effect.Active(transform.position);
+                }
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            rigd.AddForce(Vector2.one * JumpPower);
-            JumpPower = 0;
-
-            anim.SetInteger("StateID", 2);
-
-            Define.SfxType sfxType = Random.value < 0.5f ? Define.SfxType.Jump1 : Define.SfxType.Jump2;
-            SoundManager.Instance.PlaySfx(sfxType);
-
-            Effect effect = Instantiate(DataBaseManager.Instance.effect);
-            effect.Active(transform.position);
-        }
-
+        
         if (transform.position.y < DataBaseManager.Instance.GameOverY)
         {
             GameManager.Instance.OnGameOver();
@@ -50,8 +70,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        rigd.velocity = Vector2.zero;
-        anim.SetInteger("StateID", 0);
+        SetIdleState();
 
         CameraManager.Instance.OnFollow(transform.position);
 
@@ -60,18 +79,28 @@ public class Player : MonoBehaviour
             PlatformManager.Instance.LandingPlatformNum = platrform.number;
             platrform.OnLandingAnimation();
 
-            if(landedPlatform == null)
+            if (landedPlatform == null)
             {
                 landedPlatform = platrform;
                 return;
             }
 
-            if (landedPlatform != platrform) ScoreManager.Instance.AddBonus(DataBaseManager.Instance.BonusValue, transform.position);
-            else ScoreManager.Instance.ResetBonus(transform.position);
+            if (landedPlatform != platrform) 
+                ScoreManager.Instance.AddBonus(DataBaseManager.Instance.BonusValue, transform.position);
+            else 
+                ScoreManager.Instance.ResetBonus(transform.position);
 
             ScoreManager.Instance.AddScore(platrform.Score, platrform.transform.position);
 
             landedPlatform = platrform;
         }
+    }
+
+    private void SetIdleState()
+    {
+        rigd.velocity = Vector2.zero;
+        anim.SetInteger("StateID", 0);
+        JumpPower = 0;
+        isJumpReady = false;
     }
 }

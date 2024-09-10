@@ -19,8 +19,10 @@ MonoBehaviour:
   baseItem: {fileID: 5947952289910092626, guid: 2897408b41670be48a769ae468d49ee5, type: 3}
   itemSpawnPer: 1
   itemBonus: 0.25
-  JumpPowerIncrease: 10
+  JumpPowerIncrease: 500
   GameOverY: -6.5
+  minJumpPower: 400
+  maxJumpPower: 800
   LargePlatformArr:
   - {fileID: 5623247184522563970, guid: bdee56328c90caf49a5b61571324f228, type: 3}
   - {fileID: 5623247184522563970, guid: 8779d6c920a82b2419f203ac13e3dafe, type: 3}
@@ -50,7 +52,8 @@ MonoBehaviour:
   GapIntervalMin: 1
   GapIntervalMax: 2
   BonusValue: 0.05
-  followSpeed: 5
+  remainPlatformCount: 5
+  followSpeed: 20
   sfxDataArr:
   - clip: {fileID: 8300000, guid: 4973db4449778d64cad7dee8f61ee655, type: 3}
     volume: 1
